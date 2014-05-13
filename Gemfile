@@ -7,6 +7,7 @@ gem 'rails', '3.2.18'
 
 gem 'devise'
 gem 'simple_form'
+gem 'state_machine'
 
 group :development, :test do
 	gem 'sqlite3'
@@ -14,6 +15,7 @@ end
 
 group :test do
 	gem 'shoulda'
+	gem 'factory_girl_rails'
 end
 
 group :production do

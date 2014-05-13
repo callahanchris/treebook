@@ -3,6 +3,7 @@ chris:
   last_name: "Callahan"
   email: "chris@example.com"
   profile_name: "chriscallahan"
+  encrypted_password: $2a$10$Fh/Hm8RxDsuPTeBUr6864.GARlcmt7zF2WspaXGr3BIv2C27N.osq
 
 yankai:
   first_name: "Yankai"
