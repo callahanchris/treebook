@@ -6,14 +6,13 @@
 
 <% @statuses.each do |status| %>
   <% if can_display_status?(status) %>
-    <div class="status">
+    <div class="status media">
+      <%= avatar_profile_link status.user, {}, class: 'pull-left' %>
       <div class="row">
-        <div class="col-md-1">
-          <%= link_to image_tag(status.user.gravatar_url), profile_path(status.user) %>
-        </div>
-        <div class="col-md-7">
-          <strong><%= status.user.full_name %></strong>
+        <div class="media-body">
+          <h4 class="media-heading"><%= status.user.full_name %></h4>
           <p><%= status.content %></p>
+          <%= status_document_link(status) %>
           <div class="meta">
             <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
             <span class="admin">

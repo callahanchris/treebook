@@ -10,9 +10,15 @@ gem 'simple_form'
 gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem 'js-routes'
+gem 'paperclip', '3.5.4'
+
+group :test do
+	gem 'thin'
+end
 
 group :development, :test do
 	gem 'sqlite3'
+	gem 'log_buddy'
 end
 
 group :test do

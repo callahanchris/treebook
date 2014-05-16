@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-  								:first_name, :last_name, :profile_name
+  								:first_name, :last_name, :profile_name, :avatar
   # attr_accessible :title, :body
 
   validates :first_name, presence: true
@@ -46,6 +46,20 @@ class User < ActiveRecord::Base
                                       conditions: { state: 'accepted' }
 
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
+
+  has_attached_file :avatar, styles: {
+    large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
+  }
+
+  def self.get_gravatars
+    all.each do |user|
+      if !user.avatar?
+        user.avatar = URI.parse(user.gravatar_url)
+        user.save
+        print "."
+      end
+    end
+  end
 
   def full_name
   	first_name + " " + last_name
