@@ -11,6 +11,9 @@ gem 'state_machine'
 gem 'draper', '~> 1.0'
 gem 'js-routes'
 gem 'paperclip', '3.5.4'
+gem 'twitter-bootstrap-rails'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :test do
 	gem 'thin'

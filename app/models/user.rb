@@ -49,6 +49,8 @@ class User < ActiveRecord::Base
 
   has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
+  has_many :activities
+
   has_attached_file :avatar, styles: {
     large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#"
   }
@@ -71,6 +73,10 @@ class User < ActiveRecord::Base
     profile_name
   end
 
+  def to_s
+    first_name
+  end
+
   def gravatar_url
     stripped_email = email.strip
     downcased_email = stripped_email.downcase
@@ -81,5 +87,13 @@ class User < ActiveRecord::Base
 
   def has_blocked?(other_user)
     blocked_friends.include?(other_user)
+  end
+
+  def create_activity(item, action)
+    activity = activities.new
+    activity.targetable = item
+    activity.action = action
+    activity.save
+    activity
   end
 end

@@ -3,6 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :asset, as: :file %>
+	<%= bootstrap_paperclip_picture f, :asset %>
     <%= f.input :caption, input_html: { class: 'input-xxlarge' } %>
     <%= f.input :description, input_html: { class: 'input-xxlarge' }, rows: 4 %>
   </div>
